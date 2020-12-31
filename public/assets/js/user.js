@@ -117,6 +117,7 @@ $('#formBox').on('submit', "#userModify", function () {
 var userList = $("#userList");
 var checkAll = $("#checkAll");
 var deleteUsers = $("#deleteUsers");
+
 // 全选
 checkAll.on("change", function () {
     var status = $(this).prop("checked");
@@ -175,3 +176,4 @@ deleteUsers.on('click', function () {
     }
 
 })
+
