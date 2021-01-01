@@ -57,3 +57,52 @@ $("#feature").on('change', function () {
     return false;
 })
 
+
+
+var id = getUrlParams('id');
+if (id != -1) {
+    $.ajax({
+        type: 'get',
+        url: '/posts/' + id,
+        success: function (response) {
+            $.ajax({
+                type: 'get',
+                url: '/categories',
+                success: function (categories) {
+                    response.categories = categories;
+                    // console.log(response);
+                    var html = template('editPostTpl', { data: response });
+                    // console.log(html);
+                    $("#postForm").html(html);
+                },
+                error: function () {
+                    alert("修改文章渲染失败")
+                }
+            })
+        },
+        error: function () {
+            alert("修改文章获取失败");
+        }
+    })
+}
+
+
+// QUES>> 未考虑传图片的情况
+$('#postForm').on('submit', '#editPostForm', function () {
+    var formdata = $(this).serialize();
+    // alert(formdata);
+    var id = $(this).attr('data-id');
+    $.ajax({
+        type: 'put',
+        url: '/posts/' + id,
+        data: formdata,
+        success: function (response) {
+            console.log(response);
+            location.href = "/admin/posts.html";
+        },
+        error: function () {
+            alert("文章修改失败");
+        }
+    })
+    return false;
+})
