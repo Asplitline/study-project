@@ -55,7 +55,7 @@ body {
   padding: 10px 0;
 }
 
-.aside .nav li + li {
+.aside .nav li+li {
   margin-top: 1px;
 }
 
@@ -67,7 +67,7 @@ body {
   color: #a9b0c2;
 }
 
-.aside .nav .active > a {
+.aside .nav .active>a {
   color: #f6f6f6;
   background-color: #243443;
 }
@@ -102,7 +102,7 @@ body {
   transform: rotate(0);
 }
 
-.aside .nav a + ul {
+.aside .nav a+ul {
   overflow: hidden;
 
   padding: 0;
@@ -115,15 +115,15 @@ body {
   font-size: .9em;
 }
 
-.aside .nav a + ul li:first-child {
+.aside .nav a+ul li:first-child {
   margin-top: 8px;
 }
 
-.aside .nav a + ul li:last-child {
+.aside .nav a+ul li:last-child {
   margin-bottom: 8px;
 }
 
-.aside .nav a + ul a {
+.aside .nav a+ul a {
   padding-left: 30px;
 }
 
@@ -350,3 +350,5 @@ body {
   border-radius: 50%;
   box-shadow: 0 1px 5px #ccc;
 }
+
+

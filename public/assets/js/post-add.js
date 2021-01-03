@@ -35,7 +35,7 @@ $("#postAddForm").on('submit', function () {
 })
 
 // QUES>> 添加封面时显示有误
-$("#feature").on('change', function () {
+$("#postForm").on('change', '#feature', function () {
     // alert(1231);
     // console.log(this.files[0]);
     var formdata = new FormData();
@@ -48,6 +48,7 @@ $("#feature").on('change', function () {
         processData: false,
         contentType: false,
         success: function (response) {
+            console.log(response);
             $("#thumbnail").val(response[0].cover);
         },
         error: function () {
@@ -87,7 +88,8 @@ if (id != -1) {
 }
 
 
-// QUES>> 未考虑传图片的情况
+// #QUES>> 未考虑传图片的情况
+
 $('#postForm').on('submit', '#editPostForm', function () {
     var formdata = $(this).serialize();
     // alert(formdata);

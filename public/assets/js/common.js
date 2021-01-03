@@ -34,3 +34,20 @@ $('#logoutBtn').on('click', function () {
     }
 
 })
+
+function showProfile() {
+    $.ajax({
+        type: 'get',
+        url: '/users/' + userId,
+        success: function (response) {
+            console.log(response);
+            $('.profile .avatar').attr('src', response.avatar);
+            $('.profile .name').text(response.nickName);
+        },
+        error: function () {
+            alert("渲染用户信息失败");
+        }
+    })
+}
+
+showProfile();
