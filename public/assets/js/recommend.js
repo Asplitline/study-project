@@ -108,6 +108,26 @@ function showCateGory() {
 
 }
 
+
+showSearchIpt();
+function showSearchIpt() {
+    var searchTpl = `
+        <form>
+        <input type="text" class="keys" placeholder="输入关键字">
+        <input type="submit" class="btn" value="搜索">
+        </form>
+    `;
+    var html = template.render(searchTpl);
+    $(".header .search,.aside .search").html(html);
+
+}
+$(".search form").on("submit", function () {
+    var keys = $(this).children('.keys').val();
+    location.href = "/search.html?keys=" + keys;
+    return false;
+
+})
+
 function formateDate(date) {
     date = new Date(date);
     return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();

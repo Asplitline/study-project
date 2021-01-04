@@ -48,8 +48,13 @@
           email,
           password
         },
-        success: function (respose) {
-          location.href = "/admin/index.html";
+        success: function (response) {
+          console.log(response);
+          if(response.role == 'admin')
+            location.href = "/admin/index.html";
+          else {
+            location.href = "/index.html";
+          }
           // console.log(respose);
         },
         error: function () {

@@ -14,19 +14,11 @@
   <div class="wrapper">
     <div class="topnav">
       <ul>
-        <li><a href="javascript:;"><i class="fa fa-glass"></i>奇趣事</a></li>
-        <li><a href="javascript:;"><i class="fa fa-phone"></i>潮科技</a></li>
-        <li><a href="javascript:;"><i class="fa fa-fire"></i>会生活</a></li>
-        <li><a href="javascript:;"><i class="fa fa-gift"></i>美奇迹</a></li>
       </ul>
     </div>
     <div class="header">
       <h1 class="logo"><a href="index.html"><img src="assets/img/logo.png" alt=""></a></h1>
       <ul class="nav">
-        <li><a href="javascript:;"><i class="fa fa-glass"></i>奇趣事</a></li>
-        <li><a href="javascript:;"><i class="fa fa-phone"></i>潮科技</a></li>
-        <li><a href="javascript:;"><i class="fa fa-fire"></i>会生活</a></li>
-        <li><a href="javascript:;"><i class="fa fa-gift"></i>美奇迹</a></li>
       </ul>
       <div class="search">
         <form>
@@ -57,7 +49,7 @@
       </div>
     </div>
     <div class="content">
-      <div class="article">
+      <div class="panel new">
       </div>
       <style type="text/css">
         .comment {
@@ -78,9 +70,6 @@
           margin-top: 10px;
         }
       </style>
-      <div class="comment">
-
-      </div>
       <div class="panel hots">
         <h3>热门推荐</h3>
         <ul>
@@ -95,35 +84,38 @@
   <script src="assets/vendors/nprogress/nprogress.js"></script>
   <script src="assets/vendors/art-template/template-web.js"></script>
   <script src="assets/js/recommend.js"></script>
-  <script src="assets/js/detail.js"></script>
-  <script type="text/html" id="detailTpl">
-    <div class="breadcrumb">
-      <dl>
-        <dt>当前位置：</dt>
-        <dd><a href="javascript:;">{{data.category.title}}</a></dd>
-        <dd>{{data.title}}</dd>
-      </dl>
+  <script src="assets/js/search.js"></script>
+  <script type="text/html" id="searchTpl">
+      <h3>{{data.keys}} 搜索结果</h3>
+      {{if data}}
+      {{each data}}
+      <div class="entry">
+        <div class="head">
+            <a href="detail.html">{{$value.title}}</a>
+        </div>
+        <div class="main">
+            <p class="info">{{$value.author.nickName}} 发表于 {{$imports.formateDate($value.createAt)}}</p>
+            <p class="brief">{{$value.content.substr(0,80)}}</p>
+            <p class="extra">
+            <span class="reading">阅读({{$value.views}})</span>
+            <span class="comment">评论({{$value.comments}})</span>
+            <a href="javascript:;" class="like">
+                <i class="fa fa-thumbs-up"></i>
+                <span>赞({{$value.likes}})</span>
+            </a>
+            <a href="javascript:;" class="tags">
+                分类：<span>{{$value.category.title}}</span>
+            </a>
+            </p>
+            <a href="javascript:;" class="thumb">
+            <img src="{{$value.thumbnail}}" alt="">
+            </a>
+        </div>
     </div>
-    <h2 class="title">
-      <a href="javascript:;">{{data.title}}</a>
-    </h2>
-    <div class="meta">
-      <span>{{data.author.nickName}} 发布于 {{$imports.formateDate(data.createAt)}}</span>
-      <span>分类: <a href="javascript:;">{{data.category.title}}</a></span>
-      <span>阅读: ({{data.meta.views}})</span>
-      <span>评论: ({{data.meta.comments}})</span>
-      <a href="javascript:;" id="like">赞</a>
-    </div>
-    <!-- 断行 -->
-    <p class="article-content">
-      {{data.content}}
-    </p>
-  </script>
-  <script type="text/html" id="commentTpl">
-    <form>
-      <textarea style="resize:none"></textarea>
-      <input type="submit" value="提交评论">
-    </form>
+    {{/each}}
+    {{else}}
+    <h3 > 暂无你想要的结果</h3>
+    {{/if}}
   </script>
 </body>
 

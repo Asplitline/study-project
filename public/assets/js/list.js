@@ -16,7 +16,7 @@ function showCatePost() {
             },
             error: function () {
                 alert("分类获取列表失败");
-            }   
+            }
         })
     }
 }
